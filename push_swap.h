@@ -6,7 +6,7 @@
 /*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:22:40 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 17:13:47 by amarie-c         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:08:44 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,7 @@ char	**create_initiate_taba( int size);
 char	**create_initiate_tabb( int size);
 int		search_min(char **tab);
 void	sort_five(char **a, char **b);
+void	truc_muche(char **more, char *buff);
+int		error(void);
+
 #endif

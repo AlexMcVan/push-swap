@@ -6,7 +6,7 @@
 /*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:55:49 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 16:09:28 by amarie-c         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:08:22 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,16 @@ char	**create_bis(char **list)
 	return (list_bis);
 }
 
+void	truc_muche(char **more, char *buff)
+{
+	if (!(more[0]))
+		more[0] = (char *) ft_calloc(11 + 1, sizeof(char));
+	ft_memcpy(more[0], buff);
+	if (more[1])
+		free(more[1]);
+	more[1] = NULL;
+}
+
 void	push(char	**more, char	**less, int name)
 {
 	char	*buff;
@@ -36,14 +46,7 @@ void	push(char	**more, char	**less, int name)
 	buff = (char *) ft_calloc(11 + 1, sizeof(char));
 	ft_memcpy(buff, less[0]);
 	if (list_size(more) == 0)
-	{
-		if (!(more[0]))
-			more[0] = (char *) ft_calloc(11 + 1, sizeof(char));
-		ft_memcpy(more[0], buff);
-		if (more[1])
-			free(more[1]);
-		more[1] = NULL;
-	}
+		truc_muche(more, buff);
 	else
 	{
 		if (more[list_size(more) + 1])

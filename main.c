@@ -6,7 +6,7 @@
 /*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:23:03 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 17:56:31 by amarie-c         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:47:32 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,8 @@ int	main(int argc, char **argv)
 	char	**a;
 	char	**b;
 
-	if (argc > 1)
-	{	
-		if (argc > 1001)
-		{
-			write(2, "too many arguments (1000 max)\n", 30 * sizeof(char));
-			return (ERROR);
-		}
+	if (argc > 1 && argc <= 1001)
+	{		
 		a = create_initiate_taba(1000 + 1);
 		if (parsing(argc, argv, a) == ERROR)
 		{
@@ -97,5 +92,7 @@ int	main(int argc, char **argv)
 		}
 		ft_free(a, 1000 + 1);
 	}
+	if (argc > 1001)
+		write(2, "I only sort less than 1000 numbers\n", 36 * sizeof(char));
 	return (SUCCESS);
 }

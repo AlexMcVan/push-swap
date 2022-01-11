@@ -6,7 +6,7 @@
 /*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 16:43:46 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 17:16:53 by amarie-c         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:31:41 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,14 @@ void	sort_five(char **a, char **b)
 	int	min;
 
 	min = search_min(a);
-	if (min == 1 || min == 2)
+	if (min <= 2)
 	{
-		rotate(a, 1);
-		if (min == 2)
+		while (is_min(fap(a[0]), a) != 1)
 			rotate(a, 1);
 	}
-	if (min == 3 || min == 4)
+	else
 	{
-		reverse_rotate(a, 1);
-		if (min == 3)
+		while (is_min(fap(a[0]), a) != 1)
 			reverse_rotate(a, 1);
 	}
 	push(b, a, 2);

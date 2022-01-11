@@ -6,7 +6,7 @@
 #    By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/10 17:40:07 by amarie-c          #+#    #+#              #
-#    Updated: 2021/12/30 10:32:11 by amarie-c         ###   ########.fr        #
+#    Updated: 2022/01/11 20:02:39 by amarie-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ MAKE	= make
 all:		${NAME}
 
 ${NAME}:	${OBJS} ${HEADER} 
-			${CC} ${CFLAGS} ${SANITIZE} -o ${NAME} ${OBJS}
-
+			${CC} ${CFLAGS}  -o ${NAME} ${OBJS}
+# ${SANITIZE}
 .c.o:	${CC} ${CFLAGS} -c $< o ${<:.c=.o}
 
 clean:	

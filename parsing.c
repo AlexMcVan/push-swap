@@ -6,7 +6,7 @@
 /*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 11:44:53 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 17:55:56 by amarie-c         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:14:05 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ int	ft_no_double(char **list)
 	return (SUCCESS);
 }
 
+int	error(void)
+{
+	write(2, "Error\n", 6 * sizeof(char));
+	return (ERROR);
+}
+
 int	parsing(int argc, char **argv, char **dest)
 {
 	int		i;
@@ -67,25 +73,17 @@ int	parsing(int argc, char **argv, char **dest)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_strlen(argv[i]) > 11)
-		{
-			write(2, "Error\n", 6 * sizeof(char));
-			return (ERROR);
-		}
+		if (ft_strlen(argv[i]) > 11
+			|| ft_strncmp("", argv[i], 2) != 0)
+			return (error());
 		dest[i - 1] = ft_memcpy(dest[i - 1], argv[i]);
 		if ((fap(argv[i]) == ERROR) && ft_strncmp("1", argv[i], 2) != 0)
-		{
-			write(2, "Error\n", 6 * sizeof(char));
-			return (ERROR);
-		}
+			return (error());
 		i++;
 	}
 	free(dest[i - 1]);
 	dest[i - 1] = NULL;
 	if (ft_no_double(dest) == ERROR)
-	{
-		write(2, "Error\n", 6 * sizeof(char));
-		return (ERROR);
-	}
+		return (error());
 	return (SUCCESS);
 }
