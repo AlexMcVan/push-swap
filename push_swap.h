@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:22:40 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 04:22:41 by alex             ###   ########.fr       */
+/*   Updated: 2022/01/11 17:13:47 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void	ft_sort(char **a, char **b);
 void	error_parsing(char	**list, int nb);
 void	initial_tab(char **tab, int size);
 char	**create_tab(int size);
-char	**create_initiate_tab( int size);
+char	**create_initiate_taba( int size);
+char	**create_initiate_tabb( int size);
+int		search_min(char **tab);
+void	sort_five(char **a, char **b);
 #endif

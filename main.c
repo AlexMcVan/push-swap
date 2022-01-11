@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:23:03 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 05:29:13 by alex             ###   ########.fr       */
+/*   Updated: 2022/01/11 17:56:31 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,12 @@ void	ft_free(char **list, int n)
 	int	i;
 
 	i = 0;
-	while (i <= n)
+	while (i < n)
 	{
-		//printf("free list[%d]\n", i);
-		if (list[i] != NULL)
+		if (list[i] || list[i] != NULL)
+		{
 			free(list[i]);
+		}
 		i++;
 	}
 	free(list);
@@ -76,39 +77,25 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{	
-		if (argc > 1000)
+		if (argc > 1001)
 		{
 			write(2, "too many arguments (1000 max)\n", 30 * sizeof(char));
 			return (ERROR);
 		}
-		a = create_initiate_tab(1000 + 1);
-		b = create_initiate_tab(1000 + 1);
-		/*		int i = 0;
-		while ( i < 10)
-		{
-			printf("a[%d] = %s\n", i , a[i]);
-			i++;
-		}*/
+		a = create_initiate_taba(1000 + 1);
 		if (parsing(argc, argv, a) == ERROR)
 		{
-			ft_free(a, 1000);
-			ft_free(b, 1000);
+			ft_free(a, 1000 + 1);
 			return (ERROR);
 		}
-
 		if (is_sorted(a) == ERROR)
 		{
 			a = ft_ranked(a);
+			b = create_initiate_tabb(1000 + 1);
 			ft_sort(a, b);
+			ft_free(b, 1000 + 1);
 		}
-		int i = 0;
-		while ( i < 10)
-		{
-			printf("a[%d] = %s\n", i , a[i]);
-			i++;
-		}
-		ft_free(a, 1000);
-		ft_free(b, 1000);
+		ft_free(a, 1000 + 1);
 	}
 	return (SUCCESS);
 }

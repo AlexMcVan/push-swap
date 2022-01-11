@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:04:34 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/10 16:19:04 by alex             ###   ########.fr       */
+/*   Updated: 2022/01/11 17:24:22 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	**ft_ranked(char **list)
 		j++;
 		free(buff);
 	}
+	ft_free(list, 1000 + 1);
 	return (list_bis);
 }
 
@@ -52,16 +53,16 @@ void	ft_sort_big(char **a, char **b)
 		while (list_size(a) > 0 && fap(a[0]) != buff)
 		{
 			if (!((fap(a[0]) >> j) & 1))
-				push(&b, &a, 2);
+				push(b, a, 2);
 			else
 				rotate(a, 1);
 		}
 		if (!((fap(a[0]) >> j) & 1))
-			push(&b, &a, 2);
+			push(b, a, 2);
 		else
 			rotate(a, 1);
 		while (list_size(b) > 0)
-			push(&a, &b, 1);
+			push(a, b, 1);
 		if (is_sorted(a) == SUCCESS)
 			return ;
 		j++;
@@ -76,16 +77,19 @@ void	ft_sort_small(char **a, char **b)
 		ft_sort_three(a);
 	else if (list_size(a) == 4)
 	{
-		push(&b, &a, 2);
+		push(b, a, 2);
 		ft_sort_three(a);
 		ft_add_element(a, b, 1);
 	}
 	else if (list_size(a) == 5)
 	{
-		push(&b, &a, 2);
-		push(&b, &a, 2);
+		sort_five(a, b);
+		sort_five(a, b);
 		ft_sort_three(a);
-		ft_add_element(a, b, 2);
+		if (is_min(fap(b[0]), b))
+			swap(b, 2);
+		push(a, b, 1);
+		push(a, b, 1);
 	}	
 }
 
@@ -99,17 +103,17 @@ void	ft_add_element(char	**a, char	**b, int nb)
 	{
 		top_b = fap(b[0]);
 		if (is_min(top_b, a) == 1)
-			push(&a, &b, 1);
+			push(a, b, 1);
 		else if (is_max(top_b, a) == 1)
 		{
-			push(&a, &b, 1);
+			push(a, b, 1);
 			rotate(a, 1);
 		}
 		else
 		{
 			while (top_b > fap(a[0]) || top_b < fap(a[list_size(a) - 1]))
 				rotate(a, 1);
-			push(&a, &b, 1);
+			push(a, b, 1);
 		}
 		while (is_sorted(a) != SUCCESS)
 			rotate(a, 1);

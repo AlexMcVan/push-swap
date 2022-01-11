@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amarie-c <amarie-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:48:45 by amarie-c          #+#    #+#             */
-/*   Updated: 2022/01/11 03:36:51 by alex             ###   ########.fr       */
+/*   Updated: 2022/01/11 12:15:10 by amarie-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	swap(char	**list, int name)
 	char	*buff;
 
 	buff = (char *) ft_calloc(11 + 1, sizeof(char));
-	buff = NULL;
 	if (list[0] && *list[1])
 	{
 		ft_memcpy(buff, list[0]);
@@ -42,7 +41,6 @@ void	rotate(char	**list, int name)
 	i = 0;
 	buff = (char *) ft_calloc(11 + 1, sizeof(char));
 	nb = list_size(list);
-	buff = NULL;
 	ft_memcpy(buff, list[0]);
 	while (i < nb - 1)
 	{
@@ -66,9 +64,10 @@ void	reverse_rotate(char	**list, int name)
 	int		nb;
 
 	nb = list_size(list);
+	if (nb < 2)
+		return ;
 	buff = (char *) ft_calloc(11 + 1, sizeof(char));
 	i = nb - 1;
-	buff = NULL;
 	ft_memcpy(buff, list[nb - 1]);
 	while (i > 0)
 	{
