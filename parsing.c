@@ -73,8 +73,7 @@ int	parsing(int argc, char **argv, char **dest)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_strlen(argv[i]) > 11
-			|| ft_strncmp("", argv[i], 2) != 0)
+		if (ft_strlen(argv[i]) > 11)
 			return (error());
 		dest[i - 1] = ft_memcpy(dest[i - 1], argv[i]);
 		if ((fap(argv[i]) == ERROR) && ft_strncmp("1", argv[i], 2) != 0)
