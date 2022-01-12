@@ -24,8 +24,6 @@ HEADER	=	push_swap.h
 
 OBJS	= ${SRC:.c=.o}
 
-MAKE	= make
-
 all:		${NAME}
 
 ${NAME}:	${OBJS} ${HEADER} 
